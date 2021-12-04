@@ -31,7 +31,7 @@ filepath = args['file']
 options = Options()
 options.headless = True
 options.add_argument("--log-level=3")
-output = args['output']
+output = Path(args['output'])
 delay = 6
 
 usr = input("username:")
