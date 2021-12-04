@@ -22,6 +22,7 @@ parser.add_argument('-p','--postcode', help='Specify postcode district', require
 group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument('-n','--name', help='Specify surname')
 group.add_argument('-f','--file', help='Specify file path')
+parser.add_argument('-o','--output', help='Specify output file')
 args = vars(parser.parse_args())
 
 surname = args['name']
@@ -30,13 +31,13 @@ filepath = args['file']
 options = Options()
 options.headless = True
 options.add_argument("--log-level=3")
-output=Path(district+"_addresses.csv")
+output = args['output']
 delay = 6
 
 usr = input("username:")
 pw = getpass("password:")
 
-usr = manchester_spanish
+usr = str("manchester_spanish")
 
 def login():
     login.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
@@ -109,3 +110,4 @@ elif filepath:
             else:
                 h=True
             search()
+
