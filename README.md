@@ -1,5 +1,5 @@
 # tracegenie_scraper
-tracegenie.com to CSV web scraper
+tracegenie.com to CSV web scraper.
 You will need a username and password with a subscription for the scraper to function.
 
 Once the python modules have been installed:
