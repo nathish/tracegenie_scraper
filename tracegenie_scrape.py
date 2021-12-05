@@ -38,8 +38,6 @@ delay = 6
 usr = input("username:")
 pw = getpass("password:")
 
-usr = str("manchester_spanish")
-
 def login():
     login.driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
     login.driver.get("https://www.tracegenie.com")
