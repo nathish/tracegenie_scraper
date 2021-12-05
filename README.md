@@ -1,2 +1,2 @@
 # tracegenie_scraper
-![Alt_Text](img/demo.cast)
+![Alt_Text](img/demo.gif)
