@@ -31,7 +31,8 @@ filepath = args['file']
 options = Options()
 options.headless = True
 options.add_argument("--log-level=3")
-output = Path(args['output'])
+if args['output']:
+    output = Path(args['output'])
 delay = 6
 
 usr = input("username:")
@@ -90,7 +91,8 @@ def search():
             a_data.append(df)
         df = pd.concat(a_data)
         print(df)
-        df.to_csv(output, mode="a", header=h, index=False)
+        if args['output']:
+            df.to_csv(output, mode="a", header=h, index=False)
     else:
         print("no addresses found for surname: "+surname)
     login.driver.close()
