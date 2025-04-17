@@ -89,6 +89,21 @@ def search():
             EC.frame_to_be_available_and_switch_to_it((By.NAME, "iframe_a"))
         )
 
+        # Check for "zero results" text
+        try:
+            zero_results_element = WebDriverWait(login.driver, 5).until(
+                EC.text_to_be_present_in_element((By.XPATH, "/html/body/font/font/p[1]"), "zero results")
+            )
+            print(f"No addresses found for surname: {surname}")
+            return  # Move to the next name
+        except Exception as e:
+            if "Message: " in str(e):
+                pass # This was a timeout, "zero results" not found.
+            else:
+                print(f"An error occurred while checking for 'zero results': {e}")
+                print(traceback.format_exc())
+                return
+
         # Wait for at least one table with the specified class to be present
         WebDriverWait(login.driver, 15).until(
             EC.presence_of_element_located((By.XPATH, "//table[@class='table table-hover table-curved']"))
